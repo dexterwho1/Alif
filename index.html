@@ -151,61 +151,40 @@
                     id="form-error-message" role="alert">
                     Merci de compléter tous les champs obligatoires avant l'envoi du formulaire.
                 </div>
-                <form action="https://formsubmit.co/contact@alif.fr"
+                <form action="./submit.php"
                     class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6" id="signup-form" method="POST">
-                    <input id="form-subject" name="_subject" type="hidden" value="Nouvelle pré-inscription ALIF">
-                    <input name="_template" type="hidden" value="basic">
-                    <input id="form-next-url" name="_next" type="hidden" value="">
-                    <input
-                        id="autoresponse-input"
-                        name="_autoresponse"
-                        type="hidden"
-                        value="Bonjour,
-
-Bienvenue sur ALIF.
-
-Nous avons bien reçu votre demande de pré-inscription. Celle-ci a bien été enregistrée et est actuellement en cours de vérification.
-
-Conformément à notre politique d'admission, une vérification préalable des informations communiquées sera effectuée afin de garantir la qualité et la sécurité de notre environnement.
-
-Une fois votre dossier validé, vous recevrez un email de confirmation.
-
-Nous vous remercions pour votre confiance.
-
-Bien cordialement,
-L'équipe ALIF">
-                    <textarea class="hidden" id="admin-summary" name="Résumé de la demande"></textarea>
+                    <input id="redirect-path" name="redirect_path" type="hidden" value="index.html">
                     <input class="hidden" name="_honey" tabindex="-1" type="text">
                     <div class="flex flex-col gap-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Nom*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            id="last-name-input" name="Nom" placeholder="Nom" required="" type="text">
+                            id="last-name-input" name="last_name" placeholder="Nom" required="" type="text">
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Prénom*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            id="first-name-input" name="Prénom" placeholder="Prénom" required="" type="text">
+                            id="first-name-input" name="first_name" placeholder="Prénom" required="" type="text">
                     </div>
                     <div class="flex flex-col gap-2 md:col-span-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Nom de la société*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            id="company-input" name="Société" placeholder="Nom de la société" required="" type="text">
+                            id="company-input" name="company" placeholder="Nom de la société" required="" type="text">
                     </div>
                     <div class="flex flex-col gap-2 md:col-span-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Type de société*</label>
                         <select
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            name="Type de société" required="">
+                            name="company_type" required="">
                             <option value="">Micro-entreprise</option>
-                            <option value="sasu">SASU</option>
-                            <option value="sarl">SARL</option>
-                            <option value="sarl">SAS</option>
-                            <option value="sarl">EURL</option>
-                            <option value="sarl">Association</option>
-                            <option value="sarl">Autre</option>
+                            <option value="SASU">SASU</option>
+                            <option value="SARL">SARL</option>
+                            <option value="SAS">SAS</option>
+                            <option value="EURL">EURL</option>
+                            <option value="Association">Association</option>
+                            <option value="Autre">Autre</option>
 
                         </select>
                     </div>
@@ -213,11 +192,11 @@ L'équipe ALIF">
                         <label class="text-dark-navy font-bold text-sm ml-2" id="siret-label" style="">Num&eacute;ro SIRET*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            id="siret-input" inputmode="numeric" maxlength="18" name="Numéro SIRET" placeholder="123 456 789 00012" required="" type="text">
+                            id="siret-input" inputmode="numeric" maxlength="18" name="siret" placeholder="123 456 789 00012" required="" type="text">
                         <label class="flex items-center gap-3 mt-1 ml-2 cursor-pointer" style="">
                             <input
                                 class="rounded border-slate-300 text-vibrant-blue focus:ring-vibrant-blue w-5 h-5"
-                                id="siret-optional-toggle" name="Pays UE / Hors UE" type="checkbox" value="Oui">
+                                id="siret-optional-toggle" name="foreign_company" type="checkbox" value="Oui">
                             <span class="text-dark-navy text-sm font-semibold" style="">Pays UE / Hors UE (SIRET non obligatoire)</span>
                         </label>
                     </div>
@@ -229,11 +208,11 @@ L'équipe ALIF">
                         </div>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            id="vat-input" inputmode="text" maxlength="20" name="Numéro TVA" placeholder="FR 123 456 789 01" required="" type="text">
+                            id="vat-input" inputmode="text" maxlength="20" name="vat" placeholder="FR 123 456 789 01" required="" type="text">
                         <label class="flex items-center gap-3 mt-1 ml-2 cursor-pointer" style="">
                             <input
                                 class="rounded border-slate-300 text-vibrant-blue focus:ring-vibrant-blue w-5 h-5"
-                                id="vat-optional-toggle" name="Pas de numéro TVA" type="checkbox" value="Oui">
+                                id="vat-optional-toggle" name="no_vat" type="checkbox" value="Oui">
                             <span class="text-dark-navy text-sm font-semibold" style="">Pas de
                                 numéro TVA</span>
                         </label>
@@ -242,7 +221,7 @@ L'équipe ALIF">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Téléphone*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 py-3 md:py-4 px-6 placeholder:text-slate-400 focus:ring-vibrant-blue"
-                            id="phone-input" name="Téléphone" placeholder="Ex. +33 6 12 34 56 78" required="" type="tel">
+                            id="phone-input" name="phone" placeholder="Ex. +33 6 12 34 56 78" required="" type="tel">
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Email*</label>
@@ -512,10 +491,7 @@ L'équipe ALIF">
         const vatLabel = document.getElementById("vat-label");
         const formSuccessMessage = document.getElementById("form-success-message");
         const formErrorMessage = document.getElementById("form-error-message");
-        const formNextUrl = document.getElementById("form-next-url");
-        const formSubject = document.getElementById("form-subject");
-        const autoresponseInput = document.getElementById("autoresponse-input");
-        const adminSummary = document.getElementById("admin-summary");
+        const redirectPathInput = document.getElementById("redirect-path");
         const submitButton = document.getElementById("submit-button");
 
         const formatSiret = (value) => {
@@ -551,67 +527,9 @@ L'équipe ALIF">
             vatLabel.textContent = isOptional ? "Numéro TVA" : "Numéro TVA*";
         };
 
-        const setFormNextUrl = () => {
-            const nextUrl = new URL(window.location.href);
-            nextUrl.searchParams.set("submitted", "1");
-            nextUrl.hash = "inscription";
-            formNextUrl.value = nextUrl.toString();
-        };
-
-        const buildAdminSummary = () => {
-            const siretValue = siretOptionalToggle.checked ? "Pays UE - Hors UE" : (siretInput.value || "Non renseigné");
-            const vatValue = vatOptionalToggle.checked ? "Aucun" : (vatInput.value || "Non renseigné");
-
-            return [
-                "Bonjour,",
-                "",
-                "Un nouvel utilisateur vient de soumettre le formulaire d'inscription.",
-                "Voici les informations renseignées :",
-                "",
-                "Informations sur l'entreprise :",
-                `Nom : ${lastNameInput.value || "Non renseigné"}`,
-                `Prénom : ${firstNameInput.value || "Non renseigné"}`,
-                `Nom de la société : ${companyInput.value || "Non renseigné"}`,
-                `Type de société : ${signupForm.elements["Type de société"].value || "Non renseigné"}`,
-                `N° SIRET : ${siretValue}`,
-                `N° TVA : ${vatValue}`,
-                "",
-                "Informations de contact :",
-                `Téléphone : ${phoneInput.value || "Non renseigné"}`,
-                `Email : ${emailInput.value || "Non renseigné"}`,
-                "",
-                "Merci de traiter cette demande selon les procédures internes ALIF.",
-                "",
-                "Bien cordialement,",
-                "Support ALIF"
-            ].join("\n");
-        };
-
-        const syncFormEmailContent = () => {
-            const firstName = firstNameInput.value.trim() || "Bonjour";
+        const syncFormState = () => {
             emailInput.setAttribute("value", emailInput.value);
-            formSubject.value = companyInput.value.trim()
-                ? `Nouvelle pré-inscription ALIF - ${companyInput.value.trim()}`
-                : "Nouvelle pré-inscription ALIF";
-            autoresponseInput.value = [
-                `Bonjour ${firstName},`,
-                "",
-                "Bienvenue sur ALIF.",
-                "",
-                "Nous vous remercions pour votre demande de pré-inscription. Celle-ci a bien été enregistrée et est actuellement en cours de vérification.",
-                "",
-                "Conformément à notre politique d'admission, une vérification préalable des informations communiquées sera effectuée afin de garantir la qualité et la sécurité de notre environnement.",
-                "",
-                "Une fois votre dossier validé, vous recevrez un email de confirmation.",
-                "",
-                "Nous restons à votre disposition pour toute question complémentaire.",
-                "",
-                "Nous vous remercions pour votre confiance.",
-                "",
-                "Bien cordialement,",
-                "L'équipe ALIF"
-            ].join("\n");
-            adminSummary.value = buildAdminSummary();
+            redirectPathInput.value = window.location.pathname.split("/").pop() || "index.html";
         };
 
         mobileMenuButton.addEventListener("click", () => {
@@ -635,16 +553,15 @@ L'équipe ALIF">
         });
 
         [firstNameInput, lastNameInput, companyInput, phoneInput, emailInput].forEach((input) => {
-            input.addEventListener("input", syncFormEmailContent);
+            input.addEventListener("input", syncFormState);
         });
         siretOptionalToggle.addEventListener("change", syncSiretRequirement);
         vatOptionalToggle.addEventListener("change", syncVatRequirement);
-        siretOptionalToggle.addEventListener("change", syncFormEmailContent);
-        vatOptionalToggle.addEventListener("change", syncFormEmailContent);
+        siretOptionalToggle.addEventListener("change", syncFormState);
+        vatOptionalToggle.addEventListener("change", syncFormState);
 
         signupForm.addEventListener("submit", (event) => {
-            setFormNextUrl();
-            syncFormEmailContent();
+            syncFormState();
 
             if (!signupForm.checkValidity()) {
                 event.preventDefault();
@@ -659,17 +576,23 @@ L'équipe ALIF">
             submitButton.disabled = true;
         });
 
-        if (new URLSearchParams(window.location.search).get("submitted") === "1") {
+        const formStatus = new URLSearchParams(window.location.search).get("status");
+
+        if (formStatus === "success") {
             formSuccessMessage.classList.remove("hidden");
             formErrorMessage.classList.add("hidden");
+            submitButton.disabled = false;
+            submitButton.textContent = "S'inscrire gratuitement";
+        } else if (formStatus === "error") {
+            formErrorMessage.classList.remove("hidden");
+            formSuccessMessage.classList.add("hidden");
             submitButton.disabled = false;
             submitButton.textContent = "S'inscrire gratuitement";
         }
 
         syncSiretRequirement();
         syncVatRequirement();
-        setFormNextUrl();
-        syncFormEmailContent();
+        syncFormState();
     </script>
 </body>
 
