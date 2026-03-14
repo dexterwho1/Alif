@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ALIF.FR | Test validation formulaire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#92C0FF",
+                        "dark-navy": "#060464",
+                        "vibrant-blue": "#3533CD",
+                        "ethical-green": "#7ED957",
+                        "background-light": "#f5f7f8",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                },
+            },
+        };
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="min-h-screen bg-primary font-display text-dark-navy">
+    <main class="mx-auto flex min-h-screen max-w-3xl items-center px-6 py-16">
+        <section class="w-full rounded-[2rem] bg-white p-8 shadow-2xl md:p-12">
+            <div class="mb-8">
+                <p class="mb-3 inline-flex rounded-full bg-dark-navy px-4 py-1 text-sm font-bold text-white">Page de
+                    test</p>
+                <h1 class="text-3xl font-extrabold md:text-5xl">Validation du formulaire</h1>
+                <p class="mt-4 text-base text-slate-600 md:text-lg">
+                    Cette page permet de vérifier rapidement qu'un formulaire est bien validé avant d'ajouter l'envoi
+                    d'emails.
+                </p>
+            </div>
+
+            <div class="mb-6 hidden rounded-2xl border border-ethical-green/40 bg-ethical-green/10 px-5 py-4 text-sm font-semibold text-dark-navy"
+                id="success-message" role="status">
+                Formulaire validé avec succès. Les champs requis sont correctement remplis.
+            </div>
+
+            <form class="grid grid-cols-1 gap-5 md:grid-cols-2" id="test-form" novalidate>
+                <div class="flex flex-col gap-2">
+                    <label class="ml-2 text-sm font-bold" for="test-name">Nom*</label>
+                    <input class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 focus:border-vibrant-blue focus:outline-none"
+                        id="test-name" name="name" placeholder="Nom" required type="text">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="ml-2 text-sm font-bold" for="test-email">Email*</label>
+                    <input class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 focus:border-vibrant-blue focus:outline-none"
+                        id="test-email" name="email" placeholder="nom@entreprise.com" required type="email">
+                </div>
+
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label class="ml-2 text-sm font-bold" for="test-company">Société*</label>
+                    <input class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 focus:border-vibrant-blue focus:outline-none"
+                        id="test-company" name="company" placeholder="Nom de la société" required type="text">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="ml-2 text-sm font-bold" for="test-siret">Numéro SIRET*</label>
+                    <input class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 focus:border-vibrant-blue focus:outline-none"
+                        id="test-siret" inputmode="numeric" maxlength="18" name="siret"
+                        placeholder="123 456 789 00012" required type="text">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="ml-2 text-sm font-bold" for="test-vat">Numéro TVA*</label>
+                    <input class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 uppercase focus:border-vibrant-blue focus:outline-none"
+                        id="test-vat" inputmode="text" maxlength="20" name="vat" placeholder="FR 123 456 789 01"
+                        required type="text">
+                </div>
+
+                <div class="md:col-span-2">
+                    <button
+                        class="w-full rounded-2xl bg-dark-navy px-6 py-4 text-lg font-bold text-white transition-transform hover:scale-[1.01]"
+                        type="submit">
+                        Tester la validation
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const form = document.getElementById("test-form");
+        const successMessage = document.getElementById("success-message");
+        const siretInput = document.getElementById("test-siret");
+        const vatInput = document.getElementById("test-vat");
+
+        const formatSiret = (value) => {
+            const digits = value.replace(/\D/g, "").slice(0, 14);
+            const groups = [];
+            if (digits.length > 0) groups.push(digits.slice(0, 3));
+            if (digits.length > 3) groups.push(digits.slice(3, 6));
+            if (digits.length > 6) groups.push(digits.slice(6, 9));
+            if (digits.length > 9) groups.push(digits.slice(9, 14));
+            return groups.join(" ");
+        };
+
+        const formatVat = (value) => {
+            const raw = value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 16);
+            if (raw.length <= 2) return raw;
+
+            const prefix = /^[A-Z]{2}/.test(raw) ? raw.slice(0, 2) : "";
+            const rest = prefix ? raw.slice(2) : raw;
+            const chunks = rest.match(/.{1,3}/g) || [];
+
+            return prefix ? `${prefix} ${chunks.join(" ")}`.trim() : chunks.join(" ");
+        };
+
+        siretInput.addEventListener("input", () => {
+            siretInput.value = formatSiret(siretInput.value);
+        });
+
+        vatInput.addEventListener("input", () => {
+            vatInput.value = formatVat(vatInput.value);
+        });
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                successMessage.classList.add("hidden");
+                return;
+            }
+
+            successMessage.classList.remove("hidden");
+            successMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+    </script>
+</body>
+
+</html>
