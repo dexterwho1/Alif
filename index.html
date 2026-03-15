@@ -68,7 +68,7 @@
 
 <body class="bg-white text-dark-navy font-display antialiased">
     <!-- Hero Section -->
-    <section class="bg-primary flex flex-col md:min-h-screen" id="accueil">
+    <section class="bg-primary flex flex-col xl:min-h-screen" id="accueil">
         <!-- Navbar -->
         <nav class="container mx-auto px-6 py-4 md:py-6 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -76,20 +76,20 @@
                     src="./assets/alif-logo.svg"
                     style="">
             </div>
-            <div class="hidden md:flex items-center gap-8">
+            <div class="hidden lg:flex items-center gap-8">
                 <a class="text-dark-navy font-semibold hover:opacity-70" href="#accueil" style="">Accueil</a>
                 <a class="text-dark-navy font-semibold hover:opacity-70" href="#inscription" style="">Inscription</a>
                 <a class="text-dark-navy font-semibold hover:opacity-70" href="#categories" style="">Cat&eacute;gories</a>
                 <a class="text-dark-navy font-semibold hover:opacity-70" href="#comment-ca-marche" style="">Comment &ccedil;a marche</a>
             </div>
             <div class="flex items-center gap-4">
-                <button class="md:hidden p-2 text-dark-navy" id="mobile-menu-button">
+                <button class="lg:hidden p-2 text-dark-navy" id="mobile-menu-button">
                     <span class="material-symbols-outlined text-3xl">menu</span>
                 </button>
             </div>
         </nav>
         <!-- Mobile Menu -->
-        <div class="hidden bg-white w-full border-b border-slate-100 py-3 px-6 flex-col gap-4 md:hidden"
+        <div class="hidden bg-white w-full border-b border-slate-100 py-3 px-6 flex-col gap-4 lg:hidden"
             id="mobile-menu">
             <a class="text-dark-navy font-semibold hover:text-vibrant-blue transition-colors" href="#accueil">Accueil</a>
             <a class="text-dark-navy font-semibold hover:text-vibrant-blue transition-colors" href="#inscription">Inscription</a>
@@ -97,14 +97,14 @@
             <a class="text-dark-navy font-semibold hover:text-vibrant-blue transition-colors" href="#comment-ca-marche">Comment &ccedil;a marche</a>
         </div>
         <!-- Hero Content -->
-        <div class="container mx-auto px-6 flex-1 grid xl:grid-cols-2 gap-8 xl:gap-12 items-center pt-2 pb-8 md:py-12">
-            <div class="flex flex-col items-start gap-4 md:gap-6 md:max-w-3xl md:mx-auto md:items-center md:text-center xl:mx-0 xl:max-w-none xl:items-start xl:text-left">
+        <div class="container mx-auto px-6 flex-1 grid gap-8 xl:grid-cols-2 xl:gap-12 items-center pt-4 pb-10 md:pt-6 md:pb-12 xl:py-12">
+            <div class="flex flex-col items-start gap-4 md:gap-6 md:max-w-2xl md:mx-auto md:items-center md:text-center xl:mx-0 xl:max-w-none xl:items-start xl:text-left">
                 <div
                     class="inline-flex items-center px-4 py-1.5 bg-white/30 backdrop-blur-md rounded-full border border-white/40">
                     <span class="text-vibrant-blue font-bold text-sm" style="">Pré-Inscription ouverte
                     </span>
                 </div>
-                <h1 class="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-dark-navy leading-[1.1]" style="">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-extrabold text-dark-navy leading-[1.08]" style="">
                     La plateforme <span class="block sm:inline-block">éthique</span> du négoce professionnel
                 </h1>
                 <p class="text-lg md:text-xl text-vibrant-blue font-medium max-w-xl xl:max-w-none" style="">
@@ -113,19 +113,19 @@
                 </p>
                 <div class="w-full max-w-xl mt-4"></div>
             </div>
-            <div class="relative hidden xl:block h-full">
+            <div class="relative hidden md:block h-full w-full max-w-3xl mx-auto xl:max-w-none">
                 <div
-                    class="w-full h-[500px] bg-white/20 rounded-3xl backdrop-blur-sm border border-white/30 p-8 flex items-center justify-center overflow-hidden">
+                    class="w-full h-[340px] md:h-[420px] xl:h-[500px] bg-white/20 rounded-3xl backdrop-blur-sm border border-white/30 p-6 md:p-8 flex items-center justify-center overflow-hidden">
                     <!-- Abstract 3D Mockup Simulation -->
                     <div
-                        class="relative w-72 h-72 bg-gradient-to-br from-white to-vibrant-blue/20 rounded-xl shadow-2xl rotate-12 transform-gpu">
+                        class="relative w-52 h-52 md:w-64 md:h-64 xl:w-72 xl:h-72 bg-gradient-to-br from-white to-vibrant-blue/20 rounded-xl shadow-2xl rotate-12 transform-gpu">
                     </div>
                     <div
-                        class="absolute top-20 right-20 w-48 h-48 bg-vibrant-blue rounded-xl shadow-2xl -rotate-6 transform-gpu flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-6xl" style="">shopping_cart</span>
+                        class="absolute top-10 right-8 md:top-14 md:right-14 xl:top-20 xl:right-20 w-28 h-28 md:w-40 md:h-40 xl:w-48 xl:h-48 bg-vibrant-blue rounded-xl shadow-2xl -rotate-6 transform-gpu flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-4xl md:text-5xl xl:text-6xl" style="">shopping_cart</span>
                     </div>
                     <div
-                        class="absolute bottom-12 left-12 w-40 h-40 bg-ethical-green rounded-xl shadow-2xl rotate-45 transform-gpu">
+                        class="absolute bottom-8 left-8 md:bottom-10 md:left-10 xl:bottom-12 xl:left-12 w-28 h-28 md:w-32 md:h-32 xl:w-40 xl:h-40 bg-ethical-green rounded-xl shadow-2xl rotate-45 transform-gpu">
                     </div>
                 </div>
             </div>
