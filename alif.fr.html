@@ -68,9 +68,9 @@
 
 <body class="bg-white text-dark-navy font-display antialiased">
     <!-- Hero Section -->
-    <section class="bg-primary min-h-screen flex flex-col" id="accueil">
+    <section class="bg-primary flex flex-col md:min-h-screen" id="accueil">
         <!-- Navbar -->
-        <nav class="container mx-auto px-6 py-6 flex items-center justify-between">
+        <nav class="container mx-auto px-6 py-3 md:py-6 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <img alt="ALIF Logo" class="h-20 w-auto object-contain"
                     src="./assets/alif-logo.svg"
@@ -89,7 +89,7 @@
             </div>
         </nav>
         <!-- Mobile Menu -->
-        <div class="hidden bg-white w-full border-b border-slate-100 py-4 px-6 flex-col gap-4 md:hidden"
+        <div class="hidden bg-white w-full border-b border-slate-100 py-3 px-6 flex-col gap-4 md:hidden"
             id="mobile-menu">
             <a class="text-dark-navy font-semibold hover:text-vibrant-blue transition-colors" href="#accueil">Accueil</a>
             <a class="text-dark-navy font-semibold hover:text-vibrant-blue transition-colors" href="#inscription">Inscription</a>
@@ -97,8 +97,8 @@
             <a class="text-dark-navy font-semibold hover:text-vibrant-blue transition-colors" href="#comment-ca-marche">Comment &ccedil;a marche</a>
         </div>
         <!-- Hero Content -->
-        <div class="container mx-auto px-6 flex-1 grid lg:grid-cols-2 gap-12 items-center py-12">
-            <div class="flex flex-col items-start gap-6">
+        <div class="container mx-auto px-6 flex-1 grid lg:grid-cols-2 gap-6 lg:gap-12 items-center pt-1 pb-6 md:py-12">
+            <div class="flex flex-col items-start gap-3 md:gap-6">
                 <div
                     class="inline-flex items-center px-4 py-1.5 bg-white/30 backdrop-blur-md rounded-full border border-white/40">
                     <span class="text-vibrant-blue font-bold text-sm" style="">Pré-Inscription ouverte
@@ -142,37 +142,49 @@
                     <p class="text-vibrant-blue text-sm md:text-base" style="">Inscrivez-vous aujourd'hui pour être
                         informé en priorité du lancement officiel.</p>
                 </div>
-                <form class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div class="mb-6 hidden rounded-2xl border border-ethical-green/40 bg-ethical-green/10 px-5 py-4 text-sm font-semibold text-dark-navy"
+                    id="form-success-message" role="status">
+                    Merci, votre demande a bien été envoyée. Un email de confirmation vient d'être préparé pour vous et
+                    pour l'équipe ALIF.
+                </div>
+                <div class="mb-6 hidden rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm font-semibold text-red-700"
+                    id="form-error-message" role="alert">
+                    Merci de compléter tous les champs obligatoires avant l'envoi du formulaire.
+                </div>
+                <form action="./submit.php"
+                    class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6" id="signup-form" method="POST">
+                    <input id="redirect-path" name="redirect_path" type="hidden" value="index.html">
+                    <input class="hidden" name="_honey" tabindex="-1" type="text">
                     <div class="flex flex-col gap-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Nom*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            placeholder="Nom" required="" type="text">
+                            id="last-name-input" name="last_name" placeholder="Nom" required="" type="text">
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Prénom*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            placeholder="Prénom" required="" type="text">
+                            id="first-name-input" name="first_name" placeholder="Prénom" required="" type="text">
                     </div>
                     <div class="flex flex-col gap-2 md:col-span-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Nom de la société*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            placeholder="Nom de la société" required="" type="text">
+                            id="company-input" name="company" placeholder="Nom de la société" required="" type="text">
                     </div>
                     <div class="flex flex-col gap-2 md:col-span-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Type de société*</label>
                         <select
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            required="">
+                            name="company_type" required="">
                             <option value="">Micro-entreprise</option>
-                            <option value="sasu">SASU</option>
-                            <option value="sarl">SARL</option>
-                            <option value="sarl">SAS</option>
-                            <option value="sarl">EURL</option>
-                            <option value="sarl">Association</option>
-                            <option value="sarl">Autre</option>
+                            <option value="SASU">SASU</option>
+                            <option value="SARL">SARL</option>
+                            <option value="SAS">SAS</option>
+                            <option value="EURL">EURL</option>
+                            <option value="Association">Association</option>
+                            <option value="Autre">Autre</option>
 
                         </select>
                     </div>
@@ -180,27 +192,27 @@
                         <label class="text-dark-navy font-bold text-sm ml-2" id="siret-label" style="">Num&eacute;ro SIRET*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            id="siret-input" inputmode="numeric" maxlength="18" placeholder="123 456 789 00012" required="" type="text">
+                            id="siret-input" inputmode="numeric" maxlength="18" name="siret" placeholder="123 456 789 00012" required="" type="text">
                         <label class="flex items-center gap-3 mt-1 ml-2 cursor-pointer" style="">
                             <input
                                 class="rounded border-slate-300 text-vibrant-blue focus:ring-vibrant-blue w-5 h-5"
-                                id="siret-optional-toggle" type="checkbox">
+                                id="siret-optional-toggle" name="foreign_company" type="checkbox" value="Oui">
                             <span class="text-dark-navy text-sm font-semibold" style="">Pays UE / Hors UE (SIRET non obligatoire)</span>
                         </label>
                     </div>
                     <div class="flex flex-col gap-2 md:col-span-2">
                         <div class="ml-2 flex flex-wrap items-center gap-x-2 gap-y-1">
-                            <label class="text-dark-navy font-bold text-sm" style="">Numéro TVA*</label>
+                            <label class="text-dark-navy font-bold text-sm" id="vat-label" style="">Numéro TVA*</label>
                             <span class="text-xs font-semibold text-slate-500" style="">obligatoire si vous êtes en
                                 Union Européenne</span>
                         </div>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 focus:ring-vibrant-blue py-3 md:py-4 px-6"
-                            id="vat-input" inputmode="text" maxlength="20" placeholder="FR 123 456 789 01" required="" type="text">
+                            id="vat-input" inputmode="text" maxlength="20" name="vat" placeholder="FR 123 456 789 01" required="" type="text">
                         <label class="flex items-center gap-3 mt-1 ml-2 cursor-pointer" style="">
                             <input
                                 class="rounded border-slate-300 text-vibrant-blue focus:ring-vibrant-blue w-5 h-5"
-                                type="checkbox">
+                                id="vat-optional-toggle" name="no_vat" type="checkbox" value="Oui">
                             <span class="text-dark-navy text-sm font-semibold" style="">Pas de
                                 numéro TVA</span>
                         </label>
@@ -209,18 +221,18 @@
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Téléphone*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 py-3 md:py-4 px-6 placeholder:text-slate-400 focus:ring-vibrant-blue"
-                            placeholder="Ex. +33 6 12 34 56 78" required="" type="tel">
+                            id="phone-input" name="phone" placeholder="Ex. +33 6 12 34 56 78" required="" type="tel">
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-dark-navy font-bold text-sm ml-2" style="">Email*</label>
                         <input
                             class="rounded-2xl border-slate-100 bg-slate-50 py-3 md:py-4 px-6 placeholder:text-slate-400 focus:ring-vibrant-blue"
-                            placeholder="nom@entreprise.com" required="" type="email">
+                            id="email-input" name="email" placeholder="nom@entreprise.com" required="" type="email">
                     </div>
                     <div class="md:col-span-2 mt-4">
                         <button
                             class="w-full bg-dark-navy text-white py-4 md:py-5 rounded-2xl font-bold text-lg hover:scale-[1.01] transition-transform shadow-xl"
-                            style="">
+                            id="submit-button" style="" type="submit">
                             S'inscrire gratuitement
                         </button>
                     </div>
@@ -465,10 +477,22 @@
         const mobileMenuButton = document.getElementById("mobile-menu-button");
         const mobileMenu = document.getElementById("mobile-menu");
         const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        const signupForm = document.getElementById("signup-form");
+        const firstNameInput = document.getElementById("first-name-input");
+        const lastNameInput = document.getElementById("last-name-input");
+        const companyInput = document.getElementById("company-input");
+        const phoneInput = document.getElementById("phone-input");
         const siretInput = document.getElementById("siret-input");
         const vatInput = document.getElementById("vat-input");
+        const emailInput = document.getElementById("email-input");
         const siretOptionalToggle = document.getElementById("siret-optional-toggle");
+        const vatOptionalToggle = document.getElementById("vat-optional-toggle");
         const siretLabel = document.getElementById("siret-label");
+        const vatLabel = document.getElementById("vat-label");
+        const formSuccessMessage = document.getElementById("form-success-message");
+        const formErrorMessage = document.getElementById("form-error-message");
+        const redirectPathInput = document.getElementById("redirect-path");
+        const submitButton = document.getElementById("submit-button");
 
         const formatSiret = (value) => {
             const digits = value.replace(/\D/g, "").slice(0, 14);
@@ -497,6 +521,17 @@
             siretLabel.textContent = isOptional ? "Numéro SIRET" : "Numéro SIRET*";
         };
 
+        const syncVatRequirement = () => {
+            const isOptional = vatOptionalToggle.checked;
+            vatInput.required = !isOptional;
+            vatLabel.textContent = isOptional ? "Numéro TVA" : "Numéro TVA*";
+        };
+
+        const syncFormState = () => {
+            emailInput.setAttribute("value", emailInput.value);
+            redirectPathInput.value = window.location.pathname.split("/").pop() || "index.html";
+        };
+
         mobileMenuButton.addEventListener("click", () => {
             mobileMenu.classList.toggle("hidden");
             mobileMenu.classList.toggle("flex");
@@ -517,8 +552,47 @@
             vatInput.value = formatVat(vatInput.value);
         });
 
+        [firstNameInput, lastNameInput, companyInput, phoneInput, emailInput].forEach((input) => {
+            input.addEventListener("input", syncFormState);
+        });
         siretOptionalToggle.addEventListener("change", syncSiretRequirement);
+        vatOptionalToggle.addEventListener("change", syncVatRequirement);
+        siretOptionalToggle.addEventListener("change", syncFormState);
+        vatOptionalToggle.addEventListener("change", syncFormState);
+
+        signupForm.addEventListener("submit", (event) => {
+            syncFormState();
+
+            if (!signupForm.checkValidity()) {
+                event.preventDefault();
+                formErrorMessage.classList.remove("hidden");
+                formSuccessMessage.classList.add("hidden");
+                signupForm.reportValidity();
+                return;
+            }
+
+            formErrorMessage.classList.add("hidden");
+            submitButton.textContent = "Envoi en cours...";
+            submitButton.disabled = true;
+        });
+
+        const formStatus = new URLSearchParams(window.location.search).get("status");
+
+        if (formStatus === "success") {
+            formSuccessMessage.classList.remove("hidden");
+            formErrorMessage.classList.add("hidden");
+            submitButton.disabled = false;
+            submitButton.textContent = "S'inscrire gratuitement";
+        } else if (formStatus === "error") {
+            formErrorMessage.classList.remove("hidden");
+            formSuccessMessage.classList.add("hidden");
+            submitButton.disabled = false;
+            submitButton.textContent = "S'inscrire gratuitement";
+        }
+
         syncSiretRequirement();
+        syncVatRequirement();
+        syncFormState();
     </script>
 </body>
 
