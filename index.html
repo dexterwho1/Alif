@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ALIF.FR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#92C0FF",
+                        navy: "#060464",
+                        blue: "#3533CD",
+                        green: "#7ED957"
+                    },
+                    fontFamily: {
+                        display: ["Spline Sans", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: "Spline Sans", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-primary text-navy">
+    <header class="container mx-auto flex items-center justify-between px-6 py-5">
+        <div class="flex items-center gap-3">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-blue text-sm font-extrabold text-white">
+                ALIF
+            </div>
+            <span class="text-lg font-bold">ALIF.FR</span>
+        </div>
+        <a class="rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-white" href="mailto:contact@alif.fr">
+            Contact
+        </a>
+    </header>
+
+    <main class="container mx-auto grid min-h-[calc(100vh-88px)] items-center gap-10 px-6 py-10 xl:grid-cols-2">
+        <section class="max-w-2xl">
+            <span class="inline-flex rounded-full border border-white/50 bg-white/30 px-4 py-1.5 text-sm font-bold text-blue">
+                Nouvelle version en préparation
+            </span>
+            <h1 class="mt-6 text-4xl font-extrabold leading-tight md:text-6xl">
+                La plateforme éthique du négoce professionnel.
+            </h1>
+            <p class="mt-5 max-w-xl text-lg font-medium text-blue md:text-xl">
+                ALIF revient bientôt avec une nouvelle expérience plus claire, plus rapide et mieux adaptée aux usages
+                professionnels.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+                <a class="rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white" href="mailto:contact@alif.fr">
+                    Nous contacter
+                </a>
+                <a class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy" href="mailto:contact@alif.fr?subject=Pré-inscription ALIF">
+                    Demander un accès
+                </a>
+            </div>
+        </section>
+
+        <section class="relative hidden min-h-[420px] rounded-[2rem] border border-white/30 bg-white/15 p-8 backdrop-blur-sm md:block">
+            <div class="absolute left-10 top-10 h-56 w-56 rotate-12 rounded-[2rem] bg-gradient-to-br from-white to-blue/10 shadow-2xl"></div>
+            <div class="absolute right-10 top-12 flex h-40 w-40 -rotate-6 items-center justify-center rounded-[2rem] bg-blue shadow-2xl">
+                <span class="text-5xl text-white">+</span>
+            </div>
+            <div class="absolute bottom-10 left-12 h-32 w-32 rotate-45 rounded-[2rem] bg-green shadow-2xl"></div>
+        </section>
+    </main>
+</body>
+
+</html>
